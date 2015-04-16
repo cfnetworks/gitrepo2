@@ -6,13 +6,13 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
         <link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Dynamic TestApp</title>
+        <title>CFN TestApp</title>
     </head>
     <body>
         <div id="app">
 			<div  id="tab1" data-role="page">
                 <div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-                    <h1>Dynamic TestApp - Tab1</h1>
+                    <h1>Tab1</h1>
                 </div>
                 <div id="content1" data-role="content"  class="big-text">
 					Loading...
@@ -23,13 +23,14 @@
                             <li><a id="map-button" href="#tab1" data-icon="flat-location" data-theme="b">Tab1</a></li>
                             <li><a id="list-button" href="#tab2" data-icon="flat-menu">Tab2</a></li>
                             <li><a id="search-button" href="#tab3" data-icon="ms-search">Tab3</a></li>
+							<li><a id="search-button" href="#" onclick='loadData(); return false;' data-icon="ms-search">Refresh</a></li>
                         </ul>
                     </div>
                 </div>
 			</div>
 			<div  id="tab2" data-role="page">
 				<div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-					<h1>Dynamic TestApp - Tab2</h1>
+					<h1>Tab2</h1>
 				</div>
 				<div id="content2" data-role="content"  class="big-text">
 					Loading...
@@ -40,13 +41,14 @@
 							<li><a id="map-button" href="#tab1" data-icon="flat-location" >Tab1</a></li>
 							<li><a id="list-button" href="#tab2" data-icon="flat-menu" data-theme="b">Tab2</a></li>
 							<li><a id="search-button" href="#tab3" data-icon="ms-search">Tab3</a></li>
+							<li><a id="search-button" href="#" onclick='loadData(); return false;' data-icon="ms-search">Refresh</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div  id="tab3" data-role="page">
 				<div data-role="header" data-id="header1" data-position="fixed" class="ui-header">
-					<h1>Dynamic TestApp - Tab3</h1>
+					<h1>Tab3</h1>
 				</div>
 				<div id="content3" data-role="content"  class="big-text">
 					Loading...
@@ -57,6 +59,7 @@
 							<li><a id="map-button" href="#tab1" data-icon="flat-location">Tab1</a></li>
 							<li><a id="list-button" href="#tab2" data-icon="flat-menu">Tab2</a></li>
 							<li><a id="search-button" href="#tab3" data-icon="ms-search" data-theme="b">Tab3</a></li>
+							<li><a id="search-button" href="#" onclick='loadData(); return false;' data-icon="ms-search">Refresh</a></li>
 						</ul>
 					</div>
 				</div>
@@ -70,40 +73,42 @@
         <script type="text/javascript">
 		
             app.initialize();
+			loadData();
 			
-			$.ajax({
-				type:     "GET",
-				url:      "http://www.cfnetworks.at/webapp/tab1.php",
-				crossDomain: true,
-				dataType: "text",
-				success: function(data){
-					$("#content1").html(data);
-					console.log("writing #content1");
-				}
-			});					
-			
-			$.ajax({
-				type:     "GET",
-				url:      "http://www.cfnetworks.at/webapp/tab2.php",
-				crossDomain: true,
-				dataType: "text",
-				success: function(data){
-					$("#content2").html(data);
-					console.log("writing #content2");
-				}
-			});					
+			function loadData() {
+				$.ajax({
+					type:     "GET",
+					url:      "http://www.cfnetworks.at/webapp/tab1.php",
+					crossDomain: true,
+					dataType: "text",
+					success: function(data){
+						$("#content1").html(data);
+						console.log("writing #content1");
+					}
+				});					
+				
+				$.ajax({
+					type:     "GET",
+					url:      "http://www.cfnetworks.at/webapp/tab2.php",
+					crossDomain: true,
+					dataType: "text",
+					success: function(data){
+						$("#content2").html(data);
+						console.log("writing #content2");
+					}
+				});					
 
-			$.ajax({
-				type:     "GET",
-				url:      "http://www.cfnetworks.at/webapp/tab3.php",
-				crossDomain: true,
-				dataType: "text",
-				success: function(data){
-					$("#content3").html(data);
-					console.log("writing #content3");
-				}
-			});					
-			
+				$.ajax({
+					type:     "GET",
+					url:      "http://www.cfnetworks.at/webapp/tab3.php",
+					crossDomain: true,
+					dataType: "text",
+					success: function(data){
+						$("#content3").html(data);
+						console.log("writing #content3");
+					}
+				});					
+			}
 			
 			
         </script>
